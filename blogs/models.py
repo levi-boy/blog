@@ -7,7 +7,7 @@ class Blog(models.Model):
     text = models.TextField("Текст")
     file = models.ImageField("Изображение", 
                             upload_to="blog_detail_image/", 
-                            default="blog_detail_image.jpg")
+                            default="default.png")
     created = models.DateTimeField("Добавлен", auto_now_add=True)
 
     def get_absolute_url(self):
