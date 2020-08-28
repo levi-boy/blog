@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    html {
+        background: #E5E5E5;
+    }
+</style>
+ 
+<div class="last-blog">
+    <div class="my-container"> 
+        <div class="last-blog__content">
+            <p class="last-blog__new">New</p>
+            <p class="last-blog__title">{{last_blog.title}}</p>
+            {{last_blog.text|truncatechars:25|safe}}
+            {% comment %} <p class="last-blog__subtitle"></p> {% endcomment %}
+            <a class="last-blog__btn" href="{{last_blog.get_absolute_url}}">
+            <span>Читать</span>
+            </a>
+        </div>
+        <img src="{{last_blog.file.url}}" alt="" class="last-blog__img">
+    </div>
+</div>
+
+
+
+
+<div class="my-container">
+    <div class="blog-list">
+        <h1 class="blog-list__header">Другие статьи</h1>
+        <div class="blog-list__items">
+            {% for blog in blogs %}
+            <div class="blog-list__item">
+                <span class="blog-list__date">{{blog.created}}</span>
+                <img class="blog-list__img" src="{{blog.file.url}}" alt="">
+                <a href="{{blog.get_absolute_url}}" class="blog-list__title">{{blog.title}}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+
+

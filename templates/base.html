@@ -1,0 +1,72 @@
+<!doctype html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- fonts-->
+    <link rel="stylesheet" href="{% static 'fonts/styles.css' %}"> <!-- Circe Rounded, Museo Cyrl -->
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script> 
+</head>
+<body>
+    {% include "blog/components/header.html" %}
+
+    {% block content %}
+    {% endblock content %}
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script>
+    {% block scripts %}
+
+    setTimeout(function levi() {
+        if ($(window).width() <= 470) {
+            $("#cke_id_text").css('width', '280px')
+        }
+        else if ($(window).width() <= 570) {
+            $("#cke_id_text").css('width', '368px') }
+        else if ($(window).width() <= 730) {
+            $("#cke_id_text").css('width', '500px') }
+        else if ($(window).width() <= 930) {
+            $("#cke_id_text").css('width', '700px') }
+        else {
+            $("#cke_id_text").css('width', '880px') 
+        }
+    }, 500 )
+
+
+    
+    let s = $(window).resize(function(){
+        if ($(window).width() <= 470) {
+            $("#cke_id_text").css('width', '280px') }
+        else if ($(window).width() <= 570) {
+            $("#cke_id_text").css('width', '368px') }
+        else if ($(window).width() <= 730) {
+            $("#cke_id_text").css('width', '500px') }
+        else if ($(window).width() <= 930) {
+            $("#cke_id_text").css('width', '700px') }
+        else {
+            $("#cke_id_text").css('width', '880px') 
+        }
+    });
+
+    $(document).ready(function() {
+        s
+    })
+
+    {% endblock scripts %}
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  .img-thumbnail {
+    width: 286px;
+    height: 260px;
+    border: 2px solid #E5E5E5;
+    box-sizing: border-box;
+    margin-left: 3px;
+    position: relative;
+  }
+
+  .closer {
+    background: #E5E5E5;
+    position: relative;
+    right: -253px;
+    top: -251px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  
+</style>
+
+<div class="my-container">
+    <div class="blog-create">
+        <div class="blog-create__header">Добавить статью</div>
+        <form class="blog-create__form" method="post" enctype="multipart/form-data">{% csrf_token %}
+            <div class="blog-create__left-side">
+                {{form.title}}
+                {{form.text}}
+            </div>
+            <div class="blog-create__right-side">
+                <input class="blog-create__submit" type="submit" value="Опубликовать">
+                <div id="file" style="display: none">{{form.file}}</div>
+                <div class="blog-create__file">
+                    <p>Загрузить изображение</p>
+                    <div class="adding__image">
+                        <a id="open_file" class="blog-create__add">Файл</a>
+                    </div>
+                    <span id="output"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    
+</div>
+
+<script>
+    const openerFile = document.querySelector("#open_file");
+
+    openerFile.onclick = () => {
+        document.querySelector("#id_file").click();
+    }
+
+    function removeImg() {
+        const uploadingImg = document.querySelector(".img-thumbnail");
+        if (uploadingImg) {
+            //document.getElementById('output').innerHTML = "";
+            //document.querySelector('.adding__image').style.display = "block";
+            //document.querySelector('.blog-create__file').style.height = "135px";
+            location.reload()
+        }
+    }
+    
+    
+
+    function handleFileSelectSingle(evt) {
+    var file = evt.target.files; // FileList object
+
+    var f = file[0]
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        alert("Только изображения....");
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="img-thumbnail" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          //span.innerHTML += `<div class="closer" onclick="removeImg()"></div>`
+          span.innerHTML += `<i class="material-icons closer" onclick="removeImg()">close</i>`
+          document.getElementById('output').innerHTML = "";
+          document.getElementById('output').insertBefore(span, null);
+          document.querySelector('.adding__image').style.display = "none";
+          document.querySelector('.blog-create__file').style.height = "333px";
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+
+    document.getElementById('id_file').addEventListener('change', handleFileSelectSingle, false);
+</script>
+
+
+    
+
+{% endblock content %}

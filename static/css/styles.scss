@@ -1,0 +1,14 @@
+.my-container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+input {
+    outline: none;
+    border: 0;
+}
+
+@import 'components/header';
+@import 'components/blog_list';
+@import 'components/blog_detail';
+@import 'components/blog_create';

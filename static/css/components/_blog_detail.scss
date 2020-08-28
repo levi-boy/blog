@@ -1,0 +1,91 @@
+.blog-detail {
+    .my-container {
+        width: 607px;
+        display: flex;
+        flex-direction: column;
+    }
+    &__title {
+        width: 400px;
+        height: 123px;
+
+        font-family: Museo Cyrl;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 128%;
+        /* or 41px */
+
+        letter-spacing: -0.416667px;
+
+        color: #315af2;
+
+        /* Inside Auto Layout */
+
+        flex: none;
+        order: 0;
+        align-self: flex-start;
+        margin: 60px 0 20px;
+    }
+
+    &__image {
+        width: 624px;
+        height: 568px;
+        border-radius: 12px;
+        object-fit: contain;
+    }
+
+    &__content {
+        margin: 20px 0;
+    }
+}
+
+@media (max-width: 930px) {
+    .blog-detail {
+        .my-container {
+            width: 500px;
+            text-align: center;
+        }
+
+        &__title {
+            font-size: 25px;
+            width: 300px;
+            height: auto;
+        }
+
+        &__image {
+            width: 300px;
+            height: auto;
+            margin: 0 auto;
+        }
+    }
+}
+
+@media (max-width: 570px) {
+    .blog-detail {
+        .my-container {
+            width: 300px;
+            height: auto;
+        }
+
+        &__content {
+            text-align: justify;
+        }
+    }
+}
+
+@media (max-width: 370px) {
+    .blog-detail {
+        .my-container {
+            width: 250px;
+        }
+
+        &__title {
+            font-size: 20px;
+            width: 250px;
+        }
+
+        &__image {
+            width: 250px;
+        }
+    }
+}

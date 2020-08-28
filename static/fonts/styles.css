@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Circe Rounded'; /* Имя шрифта */
+    src: url('Circe Rounded.otf'); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+    font-family: 'Museo Cyrl'; /* Имя шрифта */
+    src: url('Museo Cyrl 500.otf'); /* Путь к файлу со шрифтом */
+}

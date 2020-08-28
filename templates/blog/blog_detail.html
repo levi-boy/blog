@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    html {
+        background: #E5E5E5;
+    }
+</style>
+
+<div class="blog-detail">
+    <div class="my-container">
+        <div class="blog-detail__title">{{blog.title}}</div>
+        <img class="blog-detail__image" src="{{blog.file.url}}" alt="">
+        <div class="blog-detail__content">{{blog.text|safe}}</div>
+    </div> 
+</div>
+
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% load static %}
+
+
+<header class="header">
+    <div class="my-container">
+            <div class="header__logo">
+            <a href="{% url 'blog_list' %}">
+            <img class="header__img" src="{% static 'img/Logo_Kodland.png' %}" alt="none_img">
+                <span class="header__blog">Блог</span>
+            </a>
+            </div>
+            <div class="header__links">
+                <a href="{% url 'blog_create' %}" class="header__link">
+                    <span>+ Добавить статью</span>
+                </a>
+            </div>
+    </div>
+</header>
