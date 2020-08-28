@@ -32,11 +32,13 @@
         <h1 class="blog-list__header">Другие статьи</h1>
         <div class="blog-list__items">
             {% for blog in blogs %}
+            {% if blog.pk != last_blog.pk %}
             <div class="blog-list__item">
                 <span class="blog-list__date">{{blog.created}}</span>
                 <img class="blog-list__img" src="{{blog.file.url}}" alt="">
                 <a href="{{blog.get_absolute_url}}" class="blog-list__title">{{blog.title}}</a>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
