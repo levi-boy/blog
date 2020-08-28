@@ -36,7 +36,7 @@
             <div class="blog-list__item">
                 <span class="blog-list__date">{{blog.created}}</span>
                 <img class="blog-list__img" src="{{blog.file.url}}" alt="">
-                <a href="{{blog.get_absolute_url}}" class="blog-list__title">{{blog.title}}</a>
+                <a href="{{blog.get_absolute_url}}" class="blog-list__title"><p style="width: 100%">{{blog.title}}</p></a>
             </div>
             {% endif %}
             {% endfor %}
