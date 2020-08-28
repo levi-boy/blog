@@ -34,10 +34,6 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-# MIDDLEWARE_CLASSES = (
-#     'whitenoise.middleware.WhiteNoiseMiddleware',
-# )
-
 ROOT_URLCONF = 'blog.urls'
 
 TEMPLATES = [
