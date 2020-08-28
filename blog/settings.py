@@ -1,14 +1,15 @@
 from pathlib import Path
 import os
 import django_heroku
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 SECRET_KEY = '7*ysgnmx0b1^s(ual5+fgx$zt=dtf$z3kr&is4sqc)nm6f()tf'
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -57,15 +58,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'blog.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': "django.db.backends.postgresql_psycopg2",
+#         'NAME': "blog",
+#         "USER": "postgres",
+#         "PASSWORD": "levi",
+#         "HOST": "localhost",
+#         "PORT": "5432",
+#         'CONN_MAX_AGE': 500,
+#     }
+# }
+
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': "django.db.backends.postgresql_psycopg2",
-        'NAME': "blog",
-        "USER": "postgres",
-        "PASSWORD": "levi",
-        "HOST": "localhost",
-        "PORT": "5432"
-    }
+    'default': dj_database_url.config()
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -96,9 +104,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static') // for sellect static
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
+
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
@@ -108,8 +119,7 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-
 django_heroku.settings(locals())
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+

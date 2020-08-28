@@ -10,12 +10,13 @@ from .forms import BlogCreateForm
 class BlogListView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['last_blog'] = Blog.objects.latest('created')
+        context['last_blog'] = Blog.objects.last()
         return context
 
 
-    last_blog = Blog.objects.latest('created')
+    last_blog = Blog.objects.last()
     queryset = Blog.objects.exclude(id=last_blog.id)
+    model = Blog
     context_object_name = 'blogs'
     template_name = 'blog/blog_list.html'
 
